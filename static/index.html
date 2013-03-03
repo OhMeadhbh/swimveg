@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Swimming Vegetable</title>
+    <meta name="description" content="Swimming Vegetable : A Local Wiki">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet/less" href="/bootstrap/less/bootstrap.less"/>
+    <link rel="stylesheet/less" href="/less/swimveg.less"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap-alert.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap-dropdown.js"></script>
+    <script type="text/javascript" src="/js/less.min.js"></script>
+    <script type="text/javascript" src="/js/handlebars.js"></script>
+    <script type="text/javascript" src="/js/underscore-min.js"></script>    
+    <script type="text/javascript" src="/js/error.js"></script>
+    <script type="text/javascript" src="/js/endpoint.js"></script>
+    <script type="text/javascript" src="/js/swimveg.js"></script>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+	  <a class="brand" onclick="location.hash='#';">Swimming Vegetable</a>
+	  <ul class="nav pull-right">
+            <li><a class="dropdown-toggle brand" id="dLabel" role="button" data-toggle="dropdown" data-target="#">menu</a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li></li>
+                <li><a href="#">Main Page</a></li>
+                <li><a href="#Help">Help</a></li>
+                <li><a href="#PageList">Page List</a></li>
+                <li><a href="#Options">Options</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container hidden-phone">
+      <div class="row">
+        <div class="span12 alert-area" id="alert">
+          &nbsp;
+          <noscript>
+            <div class="alert alert-error">
+              <strong>Danger!</strong>
+              JavaScript is disabled; we can't continue without it. 
+              <a href="javascript.html">Click Here</a> for more information.
+            </div>
+          </noscript>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" id="content">&nbsp;</div>
+
+    <div class="navbar navbar-fixed-bottom">
+      <div class="navbar-inner copy">Copyright &copy; 2009-2013 <a href="http://www.meadhbh.org/">Meadhbh S. Hamrick</a>, All Rights Reserved.<br/><a href="#License%20Info">License Info</a></div>
+    </div>
+
+    <script id="alert_html" class="template" type="text/x-handlebars-template">
+      <div class="alert alert-{{severity}}">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{#if heading}}{{heading}}{{else}}{{severity}}!{{/if}}</strong>
+        {{#if url}}<a href="{{url}}">{{/if}}{{description}}{{#if errno}}({{errno}}){{/if}}{{#if url}}</a>{{/if}}
+      </div>
+    </script>
+
+    <script id="alert_text" class="template" type="text/x-handlebars-template">%{{severity}}{{#if errno}}({{errno}}){{/if}};{{description}}</script>
+
+    <script id="TextRenderer" class="template" type="text/x-handlebars-template">
+      <div class="row">
+        <div class="span12 boxed">
+          <div id="title" class="editable">{{{title}}}</div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div id="bodybox" class="span12 boxed editable">{{{body}}}</div>
+      </div>
+
+    </script>
+
+    <script id="PageList" class="template" type="text/x-handlebars-template">
+      <div class="row">
+        <div class="span12 boxed">
+          <table class="table">
+            {{#each pages}}
+            <tr>
+              <td><button onclick="Grove.delete_page('{{href}}');">Delete</button></td>
+              <td><a href="{{href}}">{{title}}</a></td>
+            </tr>
+            {{/each}}
+          </table>
+        </div>
+      </div>
+    </script>
+
+
+    <script id="Options" class="template" type="text/x-handlebars-template">
+      <div class="row">
+        <div class="span12 boxed">
+          <div id="title">Options</div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div id="bodybox" class="span12 boxed">
+          <table class="table">
+            <tr>
+              <td class="key">Schema Rev.</td>
+              <td>{{schema}}</td>
+            </tr>
+            <tr>
+              <td>Default Page</td>
+              <td><a href="{{barehref}}">{{baretext}}</a></td>
+            </tr>
+            <tr>
+              <td>Backup</td>
+              <td><a id="backup" download="{{filename}}">Click here</a> to download a backup.</td>
+            </tr>
+            <tr>
+              <td>Restore</td>
+              <td>
+                <input type="file" id="restore" name="files"/>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </script>
+  </body>
+</html>

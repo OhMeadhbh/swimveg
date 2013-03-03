@@ -1,0 +1,82 @@
+body {
+    overflow-y: scroll;
+    min-width: 280px;
+    background-color: #F0F0F8;
+    margin: 56px 0px 56px 0px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+#head {
+    margin-left: -20px;
+}
+
+#head > [class*="span"] {
+    display: inline;
+    float: left;
+    margin-left: 20px;
+}
+
+.boxed {
+    outline: dotted 1px black;
+}
+
+#title {
+    display: inline;
+    float: left;
+    padding: 6px 6px 6px 4px;
+    font-size: 18pt;
+    font-weight: bold;
+    width: 99%;
+    background-color: #F8F8F8;
+}
+
+#bodybox {
+    margin-top: 12px;
+    background-color: #F8F8F8;
+    font-size: 12pt;
+}
+
+#bodybox > p {
+    margin: 4px 4px 6px 4px;
+}
+
+#bodybox > *:hover {
+    outline: dotted 1px #9F9F9F;
+    background-color: #F0F0F8;
+}
+
+.copy {
+    text-align: center;
+}
+
+#alert {
+    min-height: 55px;
+}
+
+p:after {
+    content: " ¶";
+    display: inline;
+    color: #BFBFBF;
+}
+
+::selection {
+    background: #BFBFBF;
+}
+
+.key {
+    width: 120px;
+}
+
+.editable > ol {
+    margin-left: 40px;
+}
+
+pre {
+    font-family: 'Ubuntu Mono', mono;
+    font-size: 12pt;
+}
+
+p {
+  text-align: justify;
+  text-justify: distribute;
+}
